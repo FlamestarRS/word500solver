@@ -1,10 +1,23 @@
 from itertools import product, permutations
 
 # Define the letter groups
-group1 = []
-group2 = []
-group3 = []
-group4 = []
+guess1 = []
+guess2 = ["mouch"]
+guess3 = ["blank"]
+guess4 = ["wefts"]
+guess5 = []
+guess6 = []
+guess7 = []
+guess8 = []
+
+res1 = [0, 0, 5]
+res2 = [2, 1, 2]
+res3 = [0, 0, 5]
+res4 = [0, 2, 3]
+res5 = []
+res6 = []
+res7 = []
+res8 = []
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
@@ -16,7 +29,28 @@ inval_third_letter = [] + base_invalid
 inval_fourth_letter = [] + base_invalid
 inval_fifth_letter = [] + base_invalid
 
+list_of_lists = [inval_first_letter, inval_second_letter, inval_third_letter, inval_fourth_letter, inval_fifth_letter]
+
 solution_letters = []
+
+for i in range(0,5):
+    if res1[2] == 5: # letters are not in solution
+        inval_first_letter.append(guess1[i])
+        inval_second_letter.append(guess1[i])
+        inval_third_letter.append(guess1[i])
+        inval_fourth_letter.append(guess1[i])
+        inval_fifth_letter.append(guess1[i])
+    if res1[0] == 0 and res1[2] != 5: # letters cannot be where they are
+        list_of_lists[i].append(guess1[i])
+    if res1[2] == 0: # letters are in solution
+        solution_letters.append(guess1[i])
+        if res1[0] == 0: # letters cannot be where they are, letters are in solution
+            list_of_lists[i].append(guess1[i])
+
+    # add logic for green != 0, yellow == 0, red != 0
+    # letters are where they are, or not in solution
+
+        
 
 # Generate all base combinations
 base_combinations = list(product(group1, group2, group3, group4))
