@@ -71,7 +71,7 @@ func gyrCheck(gyr [3]int) error {
 		sum += num
 	}
 	if sum != 5 {
-		return fmt.Errorf("Results must add up to 5")
+		return fmt.Errorf("results must add up to 5")
 	}
 	return nil
 }
