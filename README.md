@@ -4,36 +4,3 @@ Play Word500 here https://word500.com/
 Read the rules of the game here https://word500.com/helpen
 
 Input your guesses and the resulting green, yellow, and red permutations into this tool to filter out potential solutions based on a set of established rules.
-
-
-Logical flow of information:
-
-Make a guess, interpret green yellow red permutation in a vacuum
-    g	y	r	base case interpretation
-    0	0	5	letters are not in solution
-    0	1	4	letters cannot be where they are
-    0	2	3	letters cannot be where they are
-    0	3	2	letters cannot be where they are
-    0	4	1	letters cannot be where they are
-    0	5	0	letters cannot be where they are, letters are in solution
-    1	0	4	letters are where they are, or not in solution
-    1	1	3	
-    1	2	2	
-    1	3	1	
-    1	4	0	letters are in solution
-    2	0	3	letters are where they are, or not in solution
-    2	1	2	
-    2	2	1	
-    2	3	0	letters are in solution
-    3	0	2	letters are where they are, or not in solution
-    3	1	1	
-    3	2	0	letters are in solution
-    4	0	1	letters are where they are, or not in solution
-    4	1	0	letters are in solution
-    5	0	0	N/A
-
-Dictate where letters can and cannot be given a base case interpretation.
-Create a list of invalid letters for each slot.
-Create a list of all 5 letter combinations using valid letters.
-Find the intersection of combinations and english words.
-Narrow down results using additional guesses to determine the solution.
