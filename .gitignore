@@ -2,3 +2,5 @@ venv/
 __pycache__/
 
 devnotes.txt
+
+main.py
