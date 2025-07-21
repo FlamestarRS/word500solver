@@ -14,14 +14,25 @@ func main() {
 func startRepl() {
 	scanner := bufio.NewScanner(os.Stdin)
 	cfg := config{
-		guessMap:   map[string][3]int{},
-		inputError: "Please enter your guess and results in the following format: trick 014",
+		guessMap:      map[string][3]int{},
+		inputError:    "Please enter your guess and results in the following format: trick 014",
+		firstChar:     []string{},
+		secondChar:    []string{},
+		thirdChar:     []string{},
+		fourthChar:    []string{},
+		fifthChar:     []string{},
+		possibleWords: filterLogic(),
 	}
 
 	for {
 		fmt.Print("Enter your 5 letter word and results: ")
 		scanner.Scan()
 		guess := cleanInput(scanner.Text())
+
+		if strings.HasPrefix(guess[0], "!") {
+			fmt.Println(cfg.possibleWords)
+			continue
+		}
 
 		if len(guess) != 2 || len(guess[0]) != 5 || len(guess[1]) != 3 {
 			fmt.Println(cfg.inputError)
@@ -37,13 +48,22 @@ func startRepl() {
 		cfg.guessMap[guess[0]] = gyr
 
 		printMap(cfg)
+		cfg.handlerGuess(guess[0], cfg.guessMap[guess[0]])
+		cfg.possibleWords = cfg.repeatFiltering()
+		fmt.Println("Possible Solutions:", len(cfg.possibleWords))
 
 	}
 }
 
 type config struct {
-	guessMap   map[string][3]int
-	inputError string
+	guessMap      map[string][3]int
+	inputError    string
+	firstChar     []string
+	secondChar    []string
+	thirdChar     []string
+	fourthChar    []string
+	fifthChar     []string
+	possibleWords []string
 }
 
 func cleanInput(text string) []string {
