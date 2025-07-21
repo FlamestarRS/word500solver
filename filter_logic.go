@@ -48,6 +48,30 @@ func filterLogic() []string {
 func (cfg *config) repeatFiltering() []string {
 	newPossibleWords := []string{}
 	for _, word := range cfg.possibleWords {
+		skip := false
+
+		for guess, gyr := range cfg.guessMap {
+			guessChars := []rune(guess)
+			wordChars := []rune(word)
+			numValidChars := (gyr[0] + gyr[1])
+			counter := 0
+
+			for i := range 5 {
+				if slices.Contains(wordChars, guessChars[i]) {
+					counter++
+				}
+			}
+
+			if counter < numValidChars {
+				skip = true
+				continue
+			}
+		}
+
+		if skip {
+			continue
+		}
+
 		_, guessed := cfg.guessMap[word]
 		if !slices.Contains(cfg.firstChar, string(word[0])) &&
 			!slices.Contains(cfg.secondChar, string(word[1])) &&

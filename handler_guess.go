@@ -34,7 +34,7 @@ func (cfg *config) handlerGuess(guess string, gyr [3]int) {
 		cfg.secondChar = append(cfg.secondChar, string(guess[1]))
 		cfg.thirdChar = append(cfg.thirdChar, string(guess[2]))
 		cfg.fourthChar = append(cfg.fourthChar, string(guess[3]))
-		cfg.fifthChar = append(cfg.fifthChar, string(guess[3]))
+		cfg.fifthChar = append(cfg.fifthChar, string(guess[4]))
 		return
 	}
 

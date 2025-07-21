@@ -16,11 +16,11 @@ func startRepl() {
 	cfg := config{
 		guessMap:      map[string][3]int{},
 		inputError:    "Please enter your guess and results in the following format: trick 014",
-		firstChar:     []string{},
-		secondChar:    []string{},
-		thirdChar:     []string{},
-		fourthChar:    []string{},
-		fifthChar:     []string{},
+		firstChar:     []string{"j", "q", "x", "z"},
+		secondChar:    []string{"j", "q", "x", "z"},
+		thirdChar:     []string{"j", "q", "x", "z"},
+		fourthChar:    []string{"j", "q", "x", "z"},
+		fifthChar:     []string{"j", "q", "x", "z"},
 		possibleWords: filterLogic(),
 	}
 
