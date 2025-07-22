@@ -23,7 +23,7 @@ func startRepl() {
 		fifthChar:     []string{"j", "q", "x", "z"},
 		possibleWords: filterLogic(),
 	}
-
+	fmt.Println("Welcome to word500solver!")
 	for {
 		fmt.Print("Enter your 5 letter word and results: ")
 		scanner.Scan()
