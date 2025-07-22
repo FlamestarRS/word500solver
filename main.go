@@ -43,8 +43,9 @@ func startRepl() {
 		}
 
 		if guess[1] == "500" {
-			fmt.Println("Congratulations!")
-			os.Exit(0)
+			fmt.Println("Congratulations! Press enter to exit...")
+			scanner.Scan()
+			break
 		}
 
 		gyr, err := gyrArray(guess[1])
