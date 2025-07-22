@@ -62,7 +62,7 @@ func (cfg *config) repeatFiltering() []string {
 				}
 			}
 
-			if counter < numValidChars {
+			if counter != numValidChars {
 				skip = true
 				continue
 			}
