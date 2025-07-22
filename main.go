@@ -8,7 +8,9 @@ import (
 )
 
 func main() {
-	startRepl()
+	for {
+		startRepl()
+	}
 }
 
 func startRepl() {
@@ -23,7 +25,9 @@ func startRepl() {
 		fifthChar:     []string{"j", "q", "x", "z"},
 		possibleWords: filterLogic(),
 	}
+
 	fmt.Println("Welcome to word500solver!")
+
 	for {
 		fmt.Print("Enter your 5 letter word and results: ")
 		scanner.Scan()
@@ -43,9 +47,8 @@ func startRepl() {
 		}
 
 		if guess[1] == "500" {
-			fmt.Println("Congratulations! Press enter to exit...")
-			scanner.Scan()
-			break
+			winState(scanner)
+			return
 		}
 
 		gyr, err := gyrArray(guess[1])
@@ -116,4 +119,22 @@ func printMap(cfg config) error {
 	}
 
 	return nil
+}
+
+func winState(scanner *bufio.Scanner) {
+	fmt.Println("Congratulations! Play again? Y | N")
+	scanner.Scan()
+	input := cleanInput(scanner.Text())
+	switch input[0] {
+	case "y":
+		return
+	case "n":
+		fmt.Println("Press enter to exit...")
+		scanner.Scan()
+		os.Exit(0)
+	default:
+		fmt.Println("error: unknown input")
+		winState(scanner)
+		return
+	}
 }
