@@ -28,6 +28,9 @@ func startRepl() {
 		fmt.Print("Enter your 5 letter word and results: ")
 		scanner.Scan()
 		guess := cleanInput(scanner.Text())
+		if len(guess) <= 0 {
+			continue
+		}
 
 		if strings.HasPrefix(guess[0], "!") {
 			fmt.Println(cfg.possibleWords)
