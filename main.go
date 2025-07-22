@@ -59,7 +59,7 @@ func startRepl() {
 		printMap(cfg)
 		cfg.handlerGuess(guess[0], cfg.guessMap[guess[0]])
 		cfg.possibleWords = cfg.repeatFiltering()
-		fmt.Println("Possible Solutions:", len(cfg.possibleWords))
+		fmt.Println("Possible Solutions:", len(cfg.possibleWords), "[Enter '!' to view]")
 
 	}
 }
